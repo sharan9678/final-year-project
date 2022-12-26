@@ -10,6 +10,7 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final RestTemplate restTemplate;
+
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
                 .firstName(request.firstName())
