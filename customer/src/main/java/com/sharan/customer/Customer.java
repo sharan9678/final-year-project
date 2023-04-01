@@ -14,13 +14,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Customer {
     @Id
-    @SequenceGenerator(
-            name = "customer_id_sequence",
-            sequenceName = "customer_id_sequence"
-    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "customer_id_sequence"
+            strategy = GenerationType.AUTO
     )
     private Integer id;
     private String firstName;

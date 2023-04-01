@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
 spring:
   application:
     name: fraud
@@ -9,11 +9,11 @@ spring:
 #    username: sharan
   datasource:
     url: jdbc:mysql://localhost:3306/fraud
-    password: password
+    password: root
     username: root
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true

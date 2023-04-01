@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class CustomerService {
@@ -32,5 +34,9 @@ public class CustomerService {
         }
 
         // todo: send notification
+    }
+
+    public List<Customer> viewAllCustomer() {
+        return customerRepository.findAll();
     }
 }
