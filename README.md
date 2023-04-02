@@ -1,1 +1,2 @@
-#final-year-projects
+# final year project
+## How to run the project:
