@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8081
+  description: Generated server url
+paths:
+  /customer:
+    get:
+      tags:
+      - customer-controller
+      operationId: viewAllCustomer
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      tags:
+      - customer-controller
+      operationId: registerCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRegistrationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    CustomerRegistrationRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
