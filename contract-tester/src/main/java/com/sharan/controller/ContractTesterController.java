@@ -1,6 +1,7 @@
 package com.sharan.controller;
 
 import com.sharan.model.FilesInDirectory;
+import com.sharan.service.ComparatorService;
 import com.sharan.service.ContractTesterServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,8 @@ public class ContractTesterController {
 //        return new ResponseEntity<>(message, HttpStatus.OK);
 //    }
     @Autowired
-    ContractTesterServices contractTesterServices;
+    private ContractTesterServices contractTesterServices;
+    private ComparatorService comparatorService;
 
     @GetMapping("/download-contract")
     public ResponseEntity<String> downloadContract(
@@ -28,7 +30,7 @@ public class ContractTesterController {
         String fileUrl = "http://" + url + "/v3/api-docs.yaml";
         String destinationPath = "/Users/sharan/final-year-project/contractsDB";
         try {
-            contractTesterServices.downloadFile(fileUrl, destinationPath);
+            contractTesterServices.downloadFile(fileUrl, destinationPath, url);
             return new ResponseEntity<>("successfully downloaded the contract!", HttpStatus.OK);
         } catch (IOException exception) {
             return new ResponseEntity<>("failed to download the contract!", HttpStatus.NO_CONTENT);

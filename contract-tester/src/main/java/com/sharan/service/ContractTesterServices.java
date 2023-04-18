@@ -1,6 +1,8 @@
 package com.sharan.service;
 
 import com.sharan.model.FilesInDirectory;
+import com.sharan.utils.ContractTesterUtilities;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -9,17 +11,20 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 @Service
 public class ContractTesterServices {
+    @Autowired
+    private ContractTesterUtilities contractTesterUtilities;
+
     public void downloadFile(String fileUrl,
-                                    String destinationDirectory) throws IOException {
+                             String destinationDirectory,
+                             String name) throws IOException {
         URL url = new URL(fileUrl);
         Resource resource = new UrlResource(url);
         if (resource.exists() && resource.isReadable()) {
-            String fileName = Paths.get(url.getPath()).getFileName().toString();
+            String fileName = contractTesterUtilities.setFileName(destinationDirectory, name);
             File destination = new File(destinationDirectory, fileName);
             if (!destination.getParentFile().exists()) {
                 destination.getParentFile().mkdirs();
