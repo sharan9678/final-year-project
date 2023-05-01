@@ -4,6 +4,7 @@ import com.sharan.model.FilesInDirectory;
 import com.sharan.service.ComparatorService;
 import com.sharan.service.ContractTesterServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class ContractTesterController {
     public ResponseEntity<String> downloadContract(
             @PathParam("url") String url) {
         String fileUrl = "http://" + url + "/v3/api-docs.yaml";
-        String destinationPath = "/Users/sharan/final-year-project/contractsDB";
+        String destinationPath = "/Users/sharan/final-year-project/backend/contractsDB";
         try {
             contractTesterServices.downloadFile(fileUrl, destinationPath, url);
             return new ResponseEntity<>("successfully downloaded the contract!", HttpStatus.OK);

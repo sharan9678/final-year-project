@@ -6,7 +6,6 @@ import java.io.File;
 
 @Component
 public class ContractTesterUtilities {
-
 //    public static void main(String[] args) {
 //        ContractTesterUtilities contractTesterUtilities = new ContractTesterUtilities();
 //        String directoryPath = "/Users/sharan/final-year-project/contractsDB";

@@ -3,6 +3,7 @@ package com.sharan.service;
 import com.sharan.model.FilesInDirectory;
 import com.sharan.utils.ContractTesterUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class ContractTesterServices {
 
     public FilesInDirectory getAllFile() {
         FilesInDirectory filesInDirectory = new FilesInDirectory();
-        String directoryPath = "/Users/sharan/final-year-project/contractsDB";
+        String directoryPath = "/Users/sharan/final-year-project/backend/contractsDB";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles();
         // set the directory name
