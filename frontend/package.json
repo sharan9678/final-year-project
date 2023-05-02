@@ -9,6 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@mui/base": "^5.0.0-alpha.127",
+    "@mui/joy": "^5.0.0-alpha.77",
+    "@mui/material": "^5.12.2",
+    "@mui/system": "^5.12.1",
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
