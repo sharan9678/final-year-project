@@ -4,9 +4,9 @@ import {
   Route
 } from "react-router-dom";
 import React from "react";
-import Home from "./pages/Home";
-import Contracts from "./pages/Contracts";
-import Comparator from "./pages/Comparator";
+import Home from "./pages/home/Home";
+import Contracts from "./pages/contracts/Contracts";
+import Comparator from "./pages/comparator/Comparator";
 
 function App() {
   return (
