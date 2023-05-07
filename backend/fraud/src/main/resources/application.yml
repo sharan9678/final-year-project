@@ -9,7 +9,7 @@ spring:
 #    username: sharan
   datasource:
     url: jdbc:mysql://localhost:3306/fraud
-    password: root
+    password: password
     username: root
   jpa:
     hibernate:
