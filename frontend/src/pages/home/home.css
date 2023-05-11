@@ -1,4 +1,17 @@
-.buttons {
-  margin: 200px;
-  padding-left: 200px;
+.center-text {
+    text-align: center;
+}
+
+.bottom-space {
+    margin-bottom: 3rem;
+}
+
+.card-center {
+    display: 'flex';
+    align-items: center;
+    justify-content: center;
+}
+
+.expand {
+    padding: 1rem 2rem 0;
 }

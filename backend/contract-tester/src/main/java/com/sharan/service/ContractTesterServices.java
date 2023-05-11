@@ -39,7 +39,7 @@ public class ContractTesterServices {
 
     public FilesInDirectory getAllFile() {
         FilesInDirectory filesInDirectory = new FilesInDirectory();
-        String directoryPath = "/Users/sharan/final-year-project/backend/contractsDB";
+        String directoryPath = "D:\\final-year-project\\backend\\contractsDB";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles();
         // set the directory name

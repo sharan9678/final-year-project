@@ -29,7 +29,7 @@ public class ContractTesterController {
     public ResponseEntity<String> downloadContract(
             @PathParam("url") String url) {
         String fileUrl = "http://" + url + "/v3/api-docs.yaml";
-        String destinationPath = "/Users/sharan/final-year-project/backend/contractsDB";
+        String destinationPath = "D:\\final-year-project\\backend\\contractsDB";
         try {
             contractTesterServices.downloadFile(fileUrl, destinationPath, url);
             return new ResponseEntity<>("successfully downloaded the contract!", HttpStatus.OK);

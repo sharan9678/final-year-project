@@ -25,7 +25,7 @@ public class ComparatorController {
             @PathParam("contract2") String contract2
     ){
         try {
-            String contractsDirectoryPath = "/Users/sharan/final-year-project/backend/contractsDB/";
+            String contractsDirectoryPath = "D:\\final-year-project\\backend\\contractsDB\\";
             File file1 = new File(contractsDirectoryPath + contract1);
             File file2 = new File(contractsDirectoryPath + contract2);
             if (!file1.exists() || !file2.exists()) {
@@ -44,7 +44,7 @@ public class ComparatorController {
             @PathParam("contract2") String contract2
     ){
         try {
-            String contractsDirectoryPath = "/Users/sharan/final-year-project/backend/contractsDB/";
+            String contractsDirectoryPath = "D:\\final-year-project\\backend\\contractsDB\\";
             File file1 = new File(contractsDirectoryPath + contract1);
             File file2 = new File(contractsDirectoryPath + contract2);
             if (!file1.exists() || !file2.exists()) {
@@ -63,7 +63,7 @@ public class ComparatorController {
             @PathParam("contract2") String contract2
     ){
         try {
-            String contractsDirectoryPath = "/Users/sharan/final-year-project/backend/contractsDB/";
+            String contractsDirectoryPath = "D:\\final-year-project\\backend\\contractsDB\\";
             File file1 = new File(contractsDirectoryPath + contract1);
             File file2 = new File(contractsDirectoryPath + contract2);
             if (!file1.exists() || !file2.exists()) {

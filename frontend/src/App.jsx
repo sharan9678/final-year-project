@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 import React from "react";
 import Home from "./pages/home/Home";
-import Contracts from "./pages/contracts/Contracts";
-import Comparator from "./pages/comparator/Comparator";
+import Contracts from "./pages/contracts/ContractsDashboard";
+import Comparator from "./pages/comparator/ComparatorDashboard";
 
 function App() {
   return (
