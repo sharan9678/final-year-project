@@ -1,21 +1,39 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
-const rows = [
-    {
-        name:"contract 1",
-        location:"location 1"
-    },
-    {   
-        name:"contract 2",
-        location:"location 2"
-    }
-]   
 
 export default function ComparatorDashboard() {
     let num = 1;
     const [contracts, setContracts] = useState([]);
+    const [markdownText, setMarkdownText] = useState("# Hello, Developer!\n\nYour **Result** will be displayed here!")
+    const [oldContract, setOldContract] = useState('');
+    const [newContract, setNewContract] = useState('');
+
+    const handleOldContractChange = (event) => {
+        setOldContract(event.target.value);
+    }
+
+    const handleNewContractChange = (event) => {
+        setNewContract(event.target.value);
+    }
+
+    const handleRunTest = () => {
+        axios.get(`http://localhost:8765/comparator/getInMarkdown?contract1=${oldContract}&contract2=${newContract}`)
+            .then(response => {
+                console.log(response);
+                if (response.data.compatible === true) {
+                    alert("Your Contracts are Compatible!");
+                } else {
+                    alert("Your Contracts are NOT Compatible!");
+                    setMarkdownText(response.data.result);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     useEffect(() => {
         axios.get('http://localhost:8765/contract-test/files')
@@ -36,11 +54,14 @@ export default function ComparatorDashboard() {
             </div>
             {/* <hr/> */}
             <div className="center">
-                <TextField className="tfield" variant="outlined" label="Contract 1" id="contract1"/>
+                <TextField className="tfield" variant="outlined" label="Contract 1" id="contract1" value={oldContract} onChange={handleOldContractChange}/>
                 <span>&nbsp;&nbsp;</span>
-                <TextField className="tfield" variant="outlined" label="Contract 2" id="contract2"/>
+                <TextField className="tfield" variant="outlined" label="Contract 2" id="contract2" value={newContract} onChange={handleNewContractChange}/>
                 <span>&nbsp;&nbsp;</span>
-                <Button className="tbtn" variant="contained">run test</Button>
+                <Button className="tbtn" variant="contained" onClick={handleRunTest}>run test</Button>
+            </div>
+            <div className="markdown center">
+                <ReactMarkdown children={markdownText}/>
             </div>
             {/* <hr/> */}
             <div>

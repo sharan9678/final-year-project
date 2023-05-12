@@ -23,7 +23,7 @@ export default function ContractsDashboard() {
                     alert("Downloaded Successfully!");
                     setContractUrl("");
                 } else {
-                    alert("Enter a valid URL!");
+                    alert("Both Old and New Contract Exists!");
                     setContractUrl("");
                 }
             })
