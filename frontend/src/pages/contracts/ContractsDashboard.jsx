@@ -6,16 +6,43 @@ import axios from 'axios';
 export default function ContractsDashboard() {
     let num = 1;
     const [contracts, setContracts] = useState([]);
+    const [contractUrl, setContractUrl] = useState("");
+    const [responseArrived, setResponseArrived] = useState(false);
 
-    useEffect(() => {
-        axios.get('http://localhost:8765/contract-test/files')
+    const handleContractUrlChange = (event) => {
+        console.log(event.target.value);
+        setContractUrl(event.target.value);
+    }
+
+    const handleDownloadClick = () => {
+        axios.get(`http://localhost:8765/contract-test/download-contract?url=${contractUrl}`)
             .then(response => {
-                setContracts(response.data);
+                setResponseArrived(true);
+                console.log(response);
+                if (response.status == 200) {
+                    alert("Downloaded Successfully!");
+                    setContractUrl("");
+                } else {
+                    alert("Enter a valid URL!");
+                    setContractUrl("");
+                }
             })
             .catch(error => {
                 console.log(error);
-            });
-    }, []);
+                alert("Enter a valid URL!")
+            })
+    }
+
+    useEffect(() => {
+        axios.get('http://localhost:8765/contract-test/files')
+        .then(response => {
+            setContracts(response.data);
+            setResponseArrived(false);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }, [responseArrived]);
 
     return (
         <div>
@@ -24,9 +51,16 @@ export default function ContractsDashboard() {
                 <Typography variant="h3" color="text.secondary">View & Download <b>Contracts</b></Typography>
             </div>
             <div className="center">
-                <TextField className="tfield" variant="outlined" label="Download Contracts" id="getContract"/>
+                <TextField 
+                    className="tfield" 
+                    variant="outlined" 
+                    label="Download Contracts" 
+                    id="getContract"
+                    value={contractUrl}
+                    onChange={handleContractUrlChange}
+                />
                 <span>&nbsp;&nbsp;</span>
-                <Button className="tbtn" variant="contained">Download</Button>
+                <Button className="tbtn" variant="contained" onClick={handleDownloadClick}>Download</Button>
             </div>
             <div>
                 <TableContainer component={Paper} /*className="table"*/>

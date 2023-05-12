@@ -1,0 +1,7 @@
+com\sharan\fraud\FraudCheckResponse.class
+com\sharan\fraud\FraudApplication.class
+com\sharan\fraud\FraudCheckHistory$FraudCheckHistoryBuilder.class
+com\sharan\fraud\FraudCheckService.class
+com\sharan\fraud\FraudCheckHistory.class
+com\sharan\fraud\FraudController.class
+com\sharan\fraud\FraudCheckHistoryRepository.class

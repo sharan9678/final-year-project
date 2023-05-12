@@ -1,0 +1,34 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8082
+  description: Generated server url
+paths:
+  /api/v1/fraud-check/{customerId}:
+    get:
+      tags:
+      - fraud-controller
+      operationId: isFraudster
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FraudCheckResponse'
+components:
+  schemas:
+    FraudCheckResponse:
+      type: object
+      properties:
+        isFraudster:
+          type: boolean
