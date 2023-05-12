@@ -1,19 +1,22 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./contracts.css";
-
-const rows = [
-    {
-        name:"contract 1",
-        location:"location 1"
-    },
-    {   
-        name:"contract 2",
-        location:"location 2"
-    }
-]
+import axios from 'axios';
 
 export default function ContractsDashboard() {
+    let num = 1;
+    const [contracts, setContracts] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8765/contract-test/files')
+            .then(response => {
+                setContracts(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+
     return (
         <div>
             <div className="center">
@@ -36,14 +39,14 @@ export default function ContractsDashboard() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
+                            {contracts.map((contract) => (
                                 <TableRow
-                                    key={row.name}
+                                    key={contract.files}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                    <TableCell>1</TableCell>
-                                    <TableCell align="right">{row.name}</TableCell>
-                                    <TableCell align="right">{row.location}</TableCell>
+                                    <TableCell>{num++}</TableCell>
+                                    <TableCell align="right">{contract.files}</TableCell>
+                                    <TableCell align="right">{contract.directoryName}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

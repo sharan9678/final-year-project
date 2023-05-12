@@ -5,6 +5,7 @@ import com.sharan.service.ComparatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class ComparatorController {
     @Autowired
     private ComparatorService comparatorService;
 
+    @CrossOrigin
     @GetMapping("/getInHtml")
     public ResponseEntity<ComparatorResult> comparatorResultHtmlResponse(
             @PathParam("contract1") String contract1,
@@ -38,6 +40,7 @@ public class ComparatorController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/getInMarkdown")
     public ResponseEntity<ComparatorResult> comparatorResultMarkdownResponse(
             @PathParam("contract1") String contract1,
@@ -57,6 +60,7 @@ public class ComparatorController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/getInJson")
     public ResponseEntity<ComparatorResult> comparatorResultJsonResponse(
             @PathParam("contract1") String contract1,

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/contract-test")
@@ -25,6 +26,7 @@ public class ContractTesterController {
     private ContractTesterServices contractTesterServices;
     private ComparatorService comparatorService;
 
+    @CrossOrigin
     @GetMapping("/download-contract")
     public ResponseEntity<String> downloadContract(
             @PathParam("url") String url) {
@@ -38,8 +40,9 @@ public class ContractTesterController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/files")
-    public ResponseEntity<FilesInDirectory> filesAvailable() {
+    public ResponseEntity<ArrayList<FilesInDirectory>> filesAvailable() {
         return new ResponseEntity<>(contractTesterServices.getAllFile(), HttpStatus.OK);
     }
 }

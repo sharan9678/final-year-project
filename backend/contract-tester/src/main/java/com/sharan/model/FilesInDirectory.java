@@ -5,21 +5,21 @@ import java.util.ArrayList;
 
 public class FilesInDirectory {
     private String directoryName;
-    private ArrayList<String> files;
+    private String file;
 
     public FilesInDirectory() {
     }
 
-    public FilesInDirectory(String directoryName, ArrayList<String> files) {
+    public FilesInDirectory(String directoryName,String file) {
         this.directoryName = directoryName;
-        this.files = files;
+        this.file = file;
     }
 
     @Override
     public String toString() {
         return "FilesInDirectory{" +
                 "directoryName='" + directoryName + '\'' +
-                ", files=" + files +
+                ", files=" + file +
                 '}';
     }
 
@@ -31,11 +31,11 @@ public class FilesInDirectory {
         this.directoryName = directoryName;
     }
 
-    public ArrayList<String> getFiles() {
-        return files;
+    public String getFiles() {
+        return file;
     }
 
-    public void setFiles(ArrayList<String> files) {
-        this.files = files;
+    public void setFile(String file) {
+        this.file = file;
     }
 }

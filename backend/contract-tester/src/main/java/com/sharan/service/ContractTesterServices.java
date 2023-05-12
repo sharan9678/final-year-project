@@ -37,23 +37,25 @@ public class ContractTesterServices {
         }
     }
 
-    public FilesInDirectory getAllFile() {
-        FilesInDirectory filesInDirectory = new FilesInDirectory();
+    public ArrayList<FilesInDirectory> getAllFile() {
+//        FilesInDirectory filesInDirectory = new FilesInDirectory();
         String directoryPath = "D:\\final-year-project\\backend\\contractsDB";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles();
         // set the directory name
-        filesInDirectory.setDirectoryName(directory.getName());
+//        filesInDirectory.setDirectoryName(directory.getName());
         // get the file names in the directory
-        ArrayList<String> fileNames = new ArrayList<>();
+        ArrayList<FilesInDirectory> fileNames = new ArrayList<>();
         if (files != null) {
             for (File file : files) {
                 if (file.isFile()) {
-                    fileNames.add(file.getName());
+                    FilesInDirectory filesInDirectory = new FilesInDirectory();
+                    filesInDirectory.setDirectoryName(directory.getName());
+                    filesInDirectory.setFile(file.getName());
+                    fileNames.add(filesInDirectory);
                 }
             }
         }
-        filesInDirectory.setFiles(fileNames);
-        return filesInDirectory;
+        return fileNames;
     }
 }

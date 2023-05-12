@@ -25,7 +25,7 @@ public class ContractTesterUtilities {
      */
     public String setFileName(String directoryPath, String url) {
         //get the file name from the url
-        String fileName = url + "-old.yaml";
+        String fileName = url.replace(':', '-') + "-old.yaml";
 
         // check if a file with that name already exist in the directory
         File directory = new File(directoryPath);
@@ -35,11 +35,11 @@ public class ContractTesterUtilities {
                 for (File file : files) {
                     if (file.isFile() && file.getName().equals(fileName)) {
                         // return the file name with suffix old
-                        return url + "-new.yaml";
+                        return url.replace(':', '-') + "-new.yaml";
                     }
                 }
             }
         }
-        return url + "-old.yaml";
+        return url.replace(':', '-') + "-old.yaml";
     }
 }

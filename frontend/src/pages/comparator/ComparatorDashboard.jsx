@@ -1,5 +1,6 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const rows = [
     {
@@ -13,6 +14,19 @@ const rows = [
 ]   
 
 export default function ComparatorDashboard() {
+    let num = 1;
+    const [contracts, setContracts] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8765/contract-test/files')
+            .then(response => {
+                setContracts(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+
     return (
         <div>
             <div className="center">
@@ -41,14 +55,14 @@ export default function ComparatorDashboard() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
+                            {contracts.map((contract) => (
                                 <TableRow
-                                    key={row.name}
+                                    key={contract.files}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                    <TableCell>1</TableCell>
-                                    <TableCell align="right">{row.name}</TableCell>
-                                    <TableCell align="right">{row.location}</TableCell>
+                                    <TableCell>{num++}</TableCell>
+                                    <TableCell align="right">{contract.files}</TableCell>
+                                    <TableCell align="right">{contract.directoryName}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

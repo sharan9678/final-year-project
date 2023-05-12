@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./home.css"
 
 const handleButton1Click = () => {
-    window.open("localhost:5761", "_blank");
+    window.open("http://localhost:8761", "_blank");
 }
 
 export default function Home() {
